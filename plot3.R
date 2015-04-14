@@ -1,0 +1,10 @@
+x<-read.table("household_power_consumption.txt",header=TRUE,sep=";")
+x<-x[(x[,1]=="1/2/2007")|(x[,1]=="2/2/2007"),]
+png(filename = "plot2.png", width=480, height=480)
+plot(x$Time,x$Sub_metering_1,xaxt="n",pch=20,lty=0,ylab="Energy Submetering",xlab="")
+axis(1, labels = c("Thu", "Fri", "Sat"), at = c(0,720,1440))
+lines(x$Time,x$Sub_metering_1)
+lines(x$Time,x$Sub_metering_2,col="red")
+lines(x$Time,x$Sub_metering_3,col="blue")
+legend("topright",lty=1, lwd=2.5,col=c("black","red","blue"),legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+dev.off()
