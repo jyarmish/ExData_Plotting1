@@ -1,4 +1,3 @@
-#setwd("C:/Users/Me/Desktop/Coursera/Exploratory Data Analysis/Project-Week1 (2nd time)")
 dataFile <- "household_power_consumption.txt"
 x <- read.table(dataFile, header=TRUE, sep=";", stringsAsFactors=FALSE, dec=".")
 x<-x[(x[,1]=="1/2/2007")|(x[,1]=="2/2/2007"),]
