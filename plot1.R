@@ -4,3 +4,4 @@ z<-(as.numeric(as.character(y)))
 png(filename = "plot1.png", width=480, height=480)
 hist(z,xlab="Global Active Power(kilowatts)",col="red",main="Global Active Power")
 dev.off()
+
