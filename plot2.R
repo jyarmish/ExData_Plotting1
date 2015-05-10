@@ -1,6 +1,11 @@
-x<-read.table("household_power_consumption.txt",header=TRUE,sep=";")
-x<-x[(x[,1]=="1/2/2007")|(x[,1]=="2/2/2007"),]
+#setwd("C:/Users/Me/Desktop/Coursera/Exploratory Data Analysis/Project-Week1 (2nd time)")
+dataFile <- "household_power_consumption.txt"
+x <- read.table(dataFile, header=TRUE, sep=";", stringsAsFactors=FALSE, dec=".")
+subSetData <- x[x$Date %in% c("1/2/2007","2/2/2007") ,]
+
+datetime <- strptime(paste(subSetData$Date, subSetData$Time, sep=" "), "%d/%m/%Y %H:%M:%S")
+
 png(filename = "plot2.png", width=480, height=480)
-plot(x$Time,x$Global_active_power,ylab="Global Active Power(kilowatts)",xaxt="n",pch=20)
-axis(1, labels = c("Thu", "Fri", "Sat"), at = c(0,720,1440))
+plot(datetime, subSetData$Global_active_power, type="l", xlab="", ylab="Global Active Power (kilowatts)")
 dev.off()
+
